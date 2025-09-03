@@ -14,7 +14,8 @@ Key Benefits:
 * **Better Relationship Definitions**.
 * **Performance**.
   * With knowledge of ActiveRecord associations, it can know whether to fetch a record or simply read a foreign key, thereby saving a database query.
-  * It maps the serializer relationships and included declarations against the associations, and automatically eager loads the needed relationships.  Automatic eager loading and enforcing strict loading makes n+1 queries a thing of the past in serializers, which is often otherwise difficult to ensure.
+  * It maps the serializer relationships and included declarations against the associations, and automatically eager loads the needed relationships.  Automatic eager loading and enforcing strict loading makes n+1 queries a thing of the past in serializers, which is often otherwise difficult to ensure.  And it saves the developer the trouble of handwriting their
+  `includes()` directive in most cases!
 
 ## Installation
 
