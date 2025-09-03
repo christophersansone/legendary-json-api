@@ -2,25 +2,31 @@
 
 An ActiveRecord-aware JSON:API serializer.  Great, modern, fast, and tightly integrated with ActiveRecord.
 
+## Why another JSON:API Serializer?
+
+With so many JSON:API serializers for Ruby available, why another one, and why choose this one?  And with others that are not dependent on Rails, why use a library that is tightly dependent on Rails?
+
+Tight integration with Rails is a design decision.  For Rails apps, it is a better, tighter experience, from both the developer experience and real world performance.  For non-Rails apps, look towards a different Rails-agnostic library.
+
+Key Benefits:
+
+* **Better Serializer Name Resolution**.  Serializer resolution occurs at the class level, for example `User` will resolve the serializers to `UserSerializer`.  Relationships can determine the class _without loading the related record_ by looking at the ActiveRecord association details.  Polymorphism works by resolving the serializer for each record.  Single Table Inheritance works without needing to define a serializer for each subclass by walking up the ancestors. And it is all done performantly: the serializer for a class is static and therefore can be cached after the initial lookup.  This all results in a super fast lookup that is consistent and rarely needs to be manually specified by overriding the `serializer` property of a relationship.
+* **Better Relationship Definitions**.
+* **Performance**.
+  * With knowledge of ActiveRecord associations, it can know whether to fetch a record or simply read a foreign key, thereby saving a database query.
+  * It maps the serializer relationships and included declarations against the associations, and automatically eager loads the needed relationships.  Automatic eager loading and enforcing strict loading makes n+1 queries a thing of the past in serializers, which is often otherwise difficult to ensure.
+
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
-Install the gem and add to the application's Gemfile by executing:
+In your Gemfile:
 
 ```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-```
-
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+gem 'legendary_json_api'
 ```
 
 ## Usage
 
-TODO: Write usage instructions here
+Please refer to the specs and dummy app in `spec/dummy` for usage details.
 
 ## Development
 
@@ -30,7 +36,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/legendary_json_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/legendary_json_api/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/christophersansone/legendary_json_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/christophersansone/legendary_json_api/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -38,4 +44,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the LegendaryJsonApi project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/legendary_json_api/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the LegendaryJsonApi project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/christophersansone/legendary_json_api/blob/master/CODE_OF_CONDUCT.md).
