@@ -10,12 +10,14 @@ Tight integration with Rails is a design decision.  For Rails apps, it is a bett
 
 Key Benefits:
 
+* Strong conventions with a familiar syntax.
 * **Better Serializer Name Resolution**.  Serializer resolution occurs at the class level, for example `User` will resolve the serializers to `UserSerializer`.  Relationships can determine the class _without loading the related record_ by looking at the ActiveRecord association details.  Polymorphism works by resolving the serializer for each record.  Single Table Inheritance works without needing to define a serializer for each subclass by walking up the ancestors. And it is all done performantly: the serializer for a class is static and therefore can be cached after the initial lookup.  This all results in a super fast lookup that is consistent and rarely needs to be manually specified by overriding the `serializer` property of a relationship.
-* **Better Relationship Definitions**.
+* **Better Relationship Definitions**.  Beca
 * **Performance**.
   * With knowledge of ActiveRecord associations, it can know whether to fetch a record or simply read a foreign key, thereby saving a database query.
   * It maps the serializer relationships and included declarations against the associations, and automatically eager loads the needed relationships.  Automatic eager loading and enforcing strict loading makes n+1 queries a thing of the past in serializers, which is often otherwise difficult to ensure.  And it saves the developer the trouble of handwriting their
   `includes()` directive in most cases!
+* While it's super-charged with ActiveRecord, it works with other Ruby objects.
 
 ## Installation
 
