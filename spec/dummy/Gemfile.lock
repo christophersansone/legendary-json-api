@@ -1,7 +1,7 @@
 PATH
   remote: ../..
   specs:
-    legendary-json-api (0.1.0)
+    legendary_json_api (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -305,7 +305,7 @@ DEPENDENCIES
   brakeman
   debug
   jbuilder
-  legendary-json-api!
+  legendary_json_api!
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.2)
   rspec-rails

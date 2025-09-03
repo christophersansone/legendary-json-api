@@ -3,7 +3,7 @@
 require_relative "lib/legendary_json_api/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "legendary-json-api"
+  spec.name = "legendary_json_api"
   spec.version = LegendaryJsonApi::VERSION
   spec.authors = ["TODO: Write your name"]
   spec.email = ["TODO: Write your email address"]
@@ -32,7 +32,6 @@ Gem::Specification.new do |spec|
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.require_name = "legendary_json_api"
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"

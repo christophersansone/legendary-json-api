@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    legendary-json-api (0.1.0)
+    legendary_json_api (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -240,7 +240,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
-  legendary-json-api!
+  legendary_json_api!
   rails (~> 7.1, >= 7.0)
   rake (~> 13.0)
   rspec (~> 3.0)
