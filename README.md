@@ -27,6 +27,49 @@ gem 'legendary_json_api'
 
 ## Usage
 
+A serializer defines how a resource should be serialized, with its attributes and relationships:
+
+```ruby
+class UserSerializer < LegendaryJsonApi::Serializer
+  attributes :first_name, :last_name, :email
+
+  attribute :name do |object|
+    [ object.first_name, object.last_name ].join(' ')
+  end
+
+  belongs_to :organization
+  has_many :posts
+  has_one :job
+end
+```
+
+To serialize a single resource:
+
+```ruby
+UserSerializer.serialize(user)
+```
+
+This generates a resource object hash such as:
+
+```ruby
+{
+  type: 'user',
+  id: '1',
+  attributes: {
+    ...
+  },
+  relationships: {
+    ...
+  }
+}
+```
+
+Use the Document class to generate a complete JSON:API document:
+
+```ruby
+LegendaryJsonApi::Document.render_model(user)
+```
+
 Please refer to the specs and dummy app in `spec/dummy` for usage details.
 
 ## Development
@@ -41,7 +84,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/christ
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is copyright Legendary Labs LLC and available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Code of Conduct
 
