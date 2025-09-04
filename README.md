@@ -23,7 +23,7 @@ Key Benefits:
 * **Performance**.
   * With knowledge of ActiveRecord associations, it can know whether to fetch a `belongs_to` record, or simply read a foreign key and therefore avoid a database query.  Just by defining `belongs_to :user` in the serializer, it has what it needs to discover the relationship type, foreign key, and optimize the proceess.
   * It **automatically eager loads the relationships necessary for serialization**.  It does so by mapping the serializer relationships of the records being serialized and all `included` records, analyzes the serializer relationships against the ActiveRecord associations, and invokes a `preload` to eager load them.  It also enforces `strict_loading` to verify they are all accounted for.  By doing so, n+1 queries by the serialization layer are no longer a concern, and it saves the developer the trouble of handwriting their
-  `includes()` directive to match!  (In some cases, such as when an attribute or relationship is customized by a block, a manual `includes` may also be necessary.)
+  `includes()` directive to match!  (In some cases, such as when an attribute or relationship is customized by a block, a manual `includes` may still be necessary.)
   * It uses a sensible pattern for outputting relationships:
     * When a relationship has a `link` defined:
       * When the relationship is `included`, both the `link` and `data` are output.
